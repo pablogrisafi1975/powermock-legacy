@@ -1,0 +1,22 @@
+BasicIdea:
+
+Extract sources from powermock-mockito-1.3-src
+Remove all classes in packages 
+	org.powermock.api.easymock
+	org.powermock.modules.junit4.legacy
+in class org.powermock.modules.junit3.internal.impl.PowerMockJUnit3RunnerDelegateImpl	
+	in constructor changed line getTestConstructor(theClass); to getTestConstructor((Class<? extends TestCase>) theClass);
+	in method warning change to public
+Add  new interfaces to replace PrepareForTest and PrepareOnlyThisForTest ( IPrepareForTest and IPrepareOnlyThisForTest)
+in class org.powermock.tests.utils.impl.PrepareForTestExtractorImpl
+	in method getClassesToModify detect classes that implement interfaces IPrepareForTest and IPrepareOnlyThisForTest
+
+Generate jar file PowerMockInterfaces
+	
+java  -jar retrotranslator-transformer-1.2.9.jar -srcjar c:\temp\PowerMock-Legacy.jar -destjar c:\temp\PowerMock-Legacy-jvm14-13.0.1.jar  -target 1.4
+Processing 149 file(s) from c:\temp\PowerMock-Legacy.jar to c:\temp\PowerMock-Legacy-jvm14-13.0.1.jar
+Transformed 148 file(s).
+
+
+
+Include PowerMock-Legacy-jvm14-13.0.1.jar and retrotranslator-runtime-1.2.9.jar and javassist in yout buildpath
