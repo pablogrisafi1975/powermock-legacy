@@ -5,15 +5,20 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.IPrepareForTest;
+import org.powermock.core.classloader.interfaces.IPrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 @RunWith(PowerMockRunner.class)
-public class TestAllAnnoyingClasses implements IPrepareForTest {
+public class TestAllAnnoyingClassesByClassNames implements IPrepareForTest {
 
 	@Override
-	public Class<?>[] classesToPrepare() {
-		return new Class<?>[] { ClassWithFinalMethod.class, ClassWithStaticFinalMethod.class , ClassWithStaticMethod.class, FinalClassWithFinalMethod.class};
+	public String[] fullyQualifiedNamesToPrepare() {
+		return new String[]{"com.testpowermock.*"};
+	}
+	
+	@Override
+	public Class<?>[] classesToPrepare() {		
+		return null;
 	}
 
 	@Test
@@ -49,5 +54,7 @@ public class TestAllAnnoyingClasses implements IPrepareForTest {
 		assertEquals("NEW STRING", finalClassWithFinalMethod.getString());
 
 	}
+
+
 
 }
