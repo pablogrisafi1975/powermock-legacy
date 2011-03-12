@@ -1,36 +1,42 @@
 package com.testpowermock;
 
-
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.interfaces.IPrepareForTest;
+import org.powermock.core.classloader.interfaces.IPrepareOnlyThisForTest;
 import org.powermock.modules.junit3.PowerMockSuite;
 
+public class TestAllAnnoyingClassesMixingInterfaces extends TestCase implements IPrepareForTest, IPrepareOnlyThisForTest {
 
-public class TestAllAnnoyingClasses extends TestCase implements IPrepareForTest {
-	
+
 	public Class[] classesToPrepare() {
 		return new Class[] { ClassWithFinalMethod.class, ClassWithStaticFinalMethod.class , ClassWithStaticMethod.class, FinalClassWithFinalMethod.class};
 	}
 	
-	public String[] fullyQualifiedNamesToPrepare() {
+	public String[] fullyQualifiedNamesToPrepare() {		
 		return null;
 	}
-	
 	
 	public static TestSuite suite() throws Exception {
 		return new PowerMockSuite(new Class[] { TestAllAnnoyingClasses.class });
 	}
 	
-
+	
+	public Class[] classesToPrepareOnlyThis() {
+		return new Class[] { ClassWithFinalMethod.class, ClassWithStaticFinalMethod.class , ClassWithStaticMethod.class, FinalClassWithFinalMethod.class};
+	}
+	
+	public String[] fullyQualifiedNamesToPrepareOnlyThis() {		
+		return null;
+	}
+	
 	public void testClassWithFinalMethod_GetString() {
 		ClassWithFinalMethod classWithFinalMethod = (ClassWithFinalMethod) PowerMockito.mock(ClassWithFinalMethod.class);
 		PowerMockito.when(classWithFinalMethod.getString()).thenReturn("NEW STRING");
 
 		assertEquals("NEW STRING", classWithFinalMethod.getString());
-
 	}
 
 	public void testClassWithStaticFinalMethod_GetString() {
@@ -38,7 +44,6 @@ public class TestAllAnnoyingClasses extends TestCase implements IPrepareForTest 
 		PowerMockito.when(ClassWithStaticFinalMethod.getString()).thenReturn("NEW STRING");
 
 		assertEquals("NEW STRING", ClassWithStaticFinalMethod.getString());
-
 	}
 	
 	public void testClassWithStaticMethod_GetString() {
@@ -53,8 +58,5 @@ public class TestAllAnnoyingClasses extends TestCase implements IPrepareForTest 
 		PowerMockito.when(finalClassWithFinalMethod.getString()).thenReturn("NEW STRING");
 
 		assertEquals("NEW STRING", finalClassWithFinalMethod.getString());
-
 	}
-
-
 }

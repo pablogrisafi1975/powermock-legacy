@@ -5,7 +5,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.IPrepareForTest;
+import org.powermock.core.classloader.interfaces.IPrepareForTest;
 import org.powermock.modules.junit3.PowerMockSuite;
 
 
@@ -14,6 +14,11 @@ public class TestFinalClassWithFinalMethod  extends TestCase implements IPrepare
 	public Class[] classesToPrepare() {
 		return new Class[] { FinalClassWithFinalMethod.class};
 	}
+	
+	public String[] fullyQualifiedNamesToPrepare() {
+		return null;
+	}
+	
 	
 	public static TestSuite suite() throws Exception {
 		return new PowerMockSuite(new Class[] { TestFinalClassWithFinalMethod.class });
