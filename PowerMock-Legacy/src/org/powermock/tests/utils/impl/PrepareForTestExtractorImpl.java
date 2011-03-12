@@ -147,23 +147,28 @@ public class PrepareForTestExtractorImpl extends AbstractTestClassExtractor {
 				if (element instanceof Class) {
 					// No way to do that for methods.....
 					Class<?> clazzTest = (Class<?>) element;
+					prepareForTestInterfacePresent = IPrepareForTest.class.isAssignableFrom(clazzTest);
+					prepareOnlyThisForTestInterfacePresent = IPrepareOnlyThisForTest.class.isAssignableFrom(clazzTest);
+					if (!prepareForTestInterfacePresent && !prepareOnlyThisForTestInterfacePresent) {
+						this.preparePresent = false;
+						this.prepareOnlyThisPresent = false;
+						return;
+					}
 					Object testInstance = null;
 					try {
 						testInstance = clazzTest.newInstance();
 
 					} catch (Exception e) {
 						e.printStackTrace();
-						throw new RuntimeException("Can't instatiate class " + clazzTest, e);
+						throw new RuntimeException("Can't instantiate class " + clazzTest, e);
 					}
-					if (IPrepareForTest.class.isAssignableFrom(clazzTest)) {
-						prepareForTestInterfacePresent = true;
+					if (prepareForTestInterfacePresent) {
 						IPrepareForTest prepareForTestByClass = (IPrepareForTest) testInstance;
 						this.classesToMock = coalesce(prepareForTestByClass.classesToPrepare(), DEFAULT_CLASSES);
 						this.fullyQualifiedNamesToMock = coalesce(prepareForTestByClass.fullyQualifiedNamesToPrepare(),
 								DEFAULT_FULLY_QUALIFIED_NAMES);
 					}
-					if (IPrepareOnlyThisForTest.class.isAssignableFrom(clazzTest)) {
-						prepareOnlyThisForTestInterfacePresent = true;
+					if (prepareOnlyThisForTestInterfacePresent) {
 						IPrepareOnlyThisForTest prepareOnlyThisForTestByClass = (IPrepareOnlyThisForTest) testInstance;
 						this.classesToMockOnlyThis = coalesce(prepareOnlyThisForTestByClass.classesToPrepareOnlyThis(),
 								DEFAULT_CLASSES);
