@@ -5,7 +5,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.IPrepareForTest;
+import org.powermock.core.classloader.interfaces.IPrepareForTest;
 import org.powermock.modules.junit3.PowerMockSuite;
 
 
@@ -14,6 +14,11 @@ public class TestClassWithStaticMethod  extends TestCase implements IPrepareForT
 	public Class[] classesToPrepare() {
 		return new Class[] { ClassWithStaticMethod.class};
 	}
+	
+	public String[] fullyQualifiedNamesToPrepare() {
+		return null;
+	}
+	
 	
 	public static TestSuite suite() throws Exception {
 		return new PowerMockSuite(new Class[] { TestClassWithStaticMethod.class });
@@ -25,7 +30,4 @@ public class TestClassWithStaticMethod  extends TestCase implements IPrepareForT
 
 		assertEquals("NEW STRING", ClassWithStaticMethod.getString());
 	}
-
-
-
 }
