@@ -13,13 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.powermock.core.classloader.annotations;
+package org.powermock.core.classloader.interfaces;
 
-import org.powermock.core.IndicateReloadClass;
 
 public interface IPrepareForTest {
-	public static final Class<?>[] DEFAULT = new Class<?>[] { IndicateReloadClass.class };
 
 	Class<?>[] classesToPrepare();
+	String[] fullyQualifiedNamesToPrepare();
 
 }
