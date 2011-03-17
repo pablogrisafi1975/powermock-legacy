@@ -46,6 +46,7 @@ import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunNotifier;
 import org.powermock.core.classloader.annotations.MockPolicy;
 import org.powermock.core.classloader.annotations.PrepareEverythingForTest;
+import org.powermock.core.classloader.interfaces.IPrepareEverythingForTest;
 import org.powermock.core.spi.PowerMockTestListener;
 import org.powermock.modules.junit4.common.internal.PowerMockJUnitRunnerDelegate;
 import org.powermock.modules.junit4.internal.impl.testcaseworkaround.PowerMockJUnit4MethodValidator;
@@ -356,6 +357,7 @@ public class PowerMockJUnit44RunnerDelegateImpl extends Runner implements Filter
                         && !className.startsWith("org.junit")
                         && !new PrepareForTestExtractorImpl().isPrepared(testClassAsJavaClass, className)
                         && !testClassAsJavaClass.isAnnotationPresent(PrepareEverythingForTest.class)
+                        && !IPrepareEverythingForTest.class.isAssignableFrom(testClassAsJavaClass)
                         && !new MockPolicyInitializerImpl(testClassAsJavaClass.isAnnotationPresent(MockPolicy.class) ? testClassAsJavaClass
                                 .getAnnotation(MockPolicy.class).value() : null).isPrepared(className)) {
                     Whitebox.setInternalState(actual, "detailMessage", "Perhaps the class " + className + " must be prepared for test?",

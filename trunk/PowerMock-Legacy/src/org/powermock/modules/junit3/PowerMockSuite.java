@@ -81,7 +81,7 @@ public class PowerMockSuite extends TestSuite {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public void addTestSuite(Class testClass) {
+	public void addTestSuite(@SuppressWarnings("rawtypes") Class testClass) {
 		try {
 			testChunker.addTestSuite(testClass);
 		} catch (Exception e) {
@@ -108,7 +108,7 @@ public class PowerMockSuite extends TestSuite {
 	/**
 	 * {@inheritDoc}
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public Enumeration tests() {
 		return testChunker.tests();
