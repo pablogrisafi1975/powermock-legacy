@@ -34,6 +34,7 @@ import org.powermock.core.classloader.annotations.PrepareEverythingForTest;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.core.classloader.annotations.PrepareOnlyThisForTest;
 import org.powermock.core.classloader.annotations.SuppressStaticInitializationFor;
+import org.powermock.core.classloader.interfaces.IPrepareEverythingForTest;
 import org.powermock.core.spi.PowerMockPolicy;
 import org.powermock.core.spi.PowerMockTestListener;
 import org.powermock.core.transformers.MockTransformer;
@@ -176,7 +177,7 @@ public abstract class AbstractTestSuiteChunkerImpl<T> implements TestSuiteChunke
     protected void chunkClass(final Class<?> testClass) throws Exception {
         ClassLoader defaultMockLoader = null;
         final String[] ignorePackages = ignorePackagesExtractor.getPackagesToIgnore(testClass);
-        if (testClass.isAnnotationPresent(PrepareEverythingForTest.class)) {
+        if (testClass.isAnnotationPresent(PrepareEverythingForTest.class) || IPrepareEverythingForTest.class.isAssignableFrom(testClass)) {
             defaultMockLoader = createNewClassloader(testClass, new String[] { MockClassLoader.MODIFY_ALL_CLASSES }, ignorePackages);
         } else {
             final String[] prepareForTestClasses = prepareForTestExtractor.getTestClasses(testClass);

@@ -66,31 +66,6 @@ public class PrepareForTestExtractorImpl extends AbstractTestClassExtractor {
 
 	}
 
-	private Class<?>[] getValues(AnnotatedElement element) {
-		Class<?> clazz = (Class<?>) element;
-		try {
-			Object newInstance = clazz.newInstance();
-			if (newInstance instanceof IPrepareForTest) {
-				return ((IPrepareForTest) newInstance).classesToPrepare();
-			} else {
-				return ((IPrepareOnlyThisForTest) newInstance).classesToPrepareOnlyThis();
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new Class<?>[] {};
-		}
-	}
-
-	private void addFullyQualifiedNames(Set<String> all, PrepareForTest annotation) {
-		String[] fullyQualifiedNames = annotation.fullyQualifiedNames();
-		addFullyQualifiedNames(all, fullyQualifiedNames);
-	}
-
-	private void addFullyQualifiedNames(Set<String> all, PrepareOnlyThisForTest annotation) {
-		String[] fullyQualifiedNames = annotation.fullyQualifiedNames();
-		addFullyQualifiedNames(all, fullyQualifiedNames);
-	}
 
 	private void addFullyQualifiedNames(Set<String> all, String[] fullyQualifiedNames) {
 		for (String string : fullyQualifiedNames) {

@@ -23,8 +23,7 @@ import org.powermock.api.mockito.internal.expectation.PowerMockitoStubberImpl;
 import org.powermock.reflect.Whitebox;
 
 public class PowerMockitoCore {
-	@SuppressWarnings("unchecked")
-	public PowerMockitoStubber doAnswer(Answer answer) {
+	public PowerMockitoStubber doAnswer(@SuppressWarnings("rawtypes") Answer answer) {
 		getMockingProgress().stubbingStarted();
 		getMockingProgress().resetOngoingStubbing();
 		return (PowerMockitoStubber) new PowerMockitoStubberImpl().doAnswer(answer);
