@@ -17,7 +17,7 @@ Well, if that sounds familiar to you, here is a solution.
   * Javassist 3.11.0.GA (I think it is needed by RetroTranslator Runtime)
 And of course, PowerMock-Legacy, last version ;-)
 
-You can download all these files in one zip file in the Download section.
+You can download all these files in one zip file from here [but it is still in google code!](https://code.google.com/p/powermock-legacy/downloads/detail?name=PowerMock-Legacy-jvm14-13.0.2-all.zip)
 
 ---
 
@@ -27,6 +27,7 @@ You can download all these files in one zip file in the Download section.
 **2011-08-28:** Bad news. I'm officially leaving the project. I don't need it anymore (working in java 1.5 for now on, oh yeah that's how I like it!), and I don't have either  time or will to go on with this. Since PowerMock-Legacy had only 11 downloads, I assume there's not going to be a riot about that. If you want to use it, go on and download, it does work. If you want to improve it by fixing bugs and/or extending functionality, fork it. Just drop me a line if you need any help understanding the mess
 
 **2015-03-18:** Indiferent news. Moved to GitHub. There were 112 downloads of the full version!
+
 ---
 
 # Usage #
