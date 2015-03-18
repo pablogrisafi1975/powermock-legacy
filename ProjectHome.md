@@ -1,4 +1,4 @@
-This file is kept here for historical reasons. ALl this information should be in the README.md
+This file is kept here for historical reasons. All this information should be in the README.md
 
 ![http://powermock-legacy.googlecode.com/svn/trunk/powermock-legacy.png](http://powermock-legacy.googlecode.com/svn/trunk/powermock-legacy.png)
 # Introduction #
