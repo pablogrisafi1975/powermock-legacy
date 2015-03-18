@@ -24,7 +24,7 @@ You can download all these files in one zip file in the Download section.
 # News #
 **2011-08-18:** Good news! (for my ego at least):  Jan & Johan from JayWay, the original authors for PowerMock have been kind enough to link to this project. Yeah, I'm the greatest man alive!
 
-**2011-08-28:** Bad news. I'm officially leaving the project. I don't need it anymore (working in java 1.5 for now on, oh yeah that's how I like it!), and I don't have either  time or will to go on with this. Since PowerMock-Legacy had only 11 downloads, I assume there's not going to be a riot about that. If you want to use it, go on and download, it does work. If you want to improve it by fixing bugs and/or extending functionality, please do not fork it. Just drop me a line and I will give you full power over it.
+**2011-08-28:** Bad news. I'm officially leaving the project. I don't need it anymore (working in java 1.5 for now on, oh yeah that's how I like it!), and I don't have either  time or will to go on with this. Since PowerMock-Legacy had only 11 downloads, I assume there's not going to be a riot about that. If you want to use it, go on and download, it does work. If you want to improve it by fixing bugs and/or extending functionality, fork it. Just drop me a line if you need any help understanding the mess
 
 ---
 
