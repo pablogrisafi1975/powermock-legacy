@@ -1,3 +1,5 @@
+This file is kept here for historical reasons. ALl this information should be in the README.md
+
 ![http://powermock-legacy.googlecode.com/svn/trunk/powermock-legacy.png](http://powermock-legacy.googlecode.com/svn/trunk/powermock-legacy.png)
 # Introduction #
 Even now in 2011 there are lots of legacy projects that require Java 1.4 (particularly in big conservative businesses), and most of this projects were not designed with testability in mind, so they tend to use and abuse static (and sometimes final) methods. These methods are not easy to mock with standard tools like mockito. [PowerMock](http://code.google.com/p/powermock/) is the solution, but it needs Java 1.5 or more.
